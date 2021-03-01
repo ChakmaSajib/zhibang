@@ -2,19 +2,14 @@ import React from "react"
 import Routes from "./pages/routes/routes.js"
 import './App.css';
 import { Provider } from "react-redux";
-import store, { history } from "./stores/store";
-import { ConnectedRouter } from "connected-react-router";
 
 function App() {
   return (
-    <Provider store={store}>
-  <ConnectedRouter history={history}>
+    <Provider>
     <div className="App">
       <Routes/>
     </div>
-    </ConnectedRouter>
     </Provider>
-    
   );
 }
 
