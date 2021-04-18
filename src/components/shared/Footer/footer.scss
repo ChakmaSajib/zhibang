@@ -1,0 +1,28 @@
+.footer_container {
+  width: 100%;
+}
+.footer_container__footer {
+  width: 1170px;
+  padding: 0;
+  margin: 0 auto;
+  height: 466px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  img {
+    margin-top: 340.9px;
+    height: 34px;
+    margin: 5.8px 0 8.2px 2.4px;
+  }
+  h4 {
+    margin-top: 29.1px;
+    margin-bottom: 20px;
+    height: 16px;
+    font-family: Poppins;
+    font-size: 16px;
+    line-height: 2;
+    color: #39424e;
+    text-align: center;
+  }
+}

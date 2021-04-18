@@ -1,0 +1,32 @@
+.card {
+  width: 450px;
+  height: 240px;
+  position: relative;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  img {
+    height: 96px;
+    width: 96px;
+    border-radius: 50%;
+    background-color: #39424e;
+    position: absolute;
+    top: 10px;
+    left: -48px;
+    z-index: 5;
+  }
+  padding: 48px;
+}
+
+.text {
+  padding-left: 16px;
+
+  h6 {
+    color: #1ba94c;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 32px;
+  }
+  p {
+    font-size: 20px;
+  }
+}

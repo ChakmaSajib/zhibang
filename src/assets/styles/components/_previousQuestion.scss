@@ -1,0 +1,27 @@
+.preview__question_info {
+  display: flex;
+  justify-content: space-between;
+  color: #738f93;
+  margin-bottom: 2.5rem;
+
+  .preview__question_info_right {
+    text-align: right;
+  }
+}
+
+.preview__questions {
+  .preview__question {
+    h4 {
+      font-size: 1rem;
+      margin-bottom: 0;
+    }
+
+    ul {
+      margin-bottom: 2rem;
+      li {
+        line-height: 1.5;
+        color: #738f93;
+      }
+    }
+  }
+}

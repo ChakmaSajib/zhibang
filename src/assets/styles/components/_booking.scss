@@ -1,0 +1,60 @@
+.booking {
+  text-align: center;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.34);
+  background-color: #f2f2f2;
+  width: 25rem;
+  padding: 1.875rem;
+
+  .react-calendar {
+    width: 100% !important;
+  }
+  .conitnue_button {
+    color: #f2f2f2;
+    background-color: $primaryBlue;
+    width: 100%;
+  }
+}
+
+.calendar {
+  p {
+    font-size: 1.25rem;
+  }
+}
+
+.booking__tools {
+  p {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+  }
+  .textOr {
+    font-weight: 300;
+  }
+}
+.zhibang__booking {
+  margin: 0.5rem 0;
+  height: 3rem;
+  border-radius: 0.5rem;
+  border: solid 1px #738f93;
+  text-align: center;
+  line-height: 3rem;
+  span {
+    color: $primaryBlue;
+  }
+
+  svg {
+    width: auto !important;
+    height: 2rem;
+    color: $lightGrey;
+  }
+}
+
+.booking__tools__type {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+
+  .active {
+    color: $primaryBlue;
+  }
+}

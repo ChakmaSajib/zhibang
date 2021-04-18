@@ -1,0 +1,27 @@
+.add {
+  font-size: 1rem;
+  line-height: 1rem;
+  color: #fff;
+  background-color: $lightGrey;
+  margin-bottom: 1rem;
+  height: 2rem;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+
+  &:focus,
+  &:hover {
+    outline: 0;
+    opacity: 0.87;
+  }
+
+  svg {
+    height: 1.25rem;
+    color: #fff;
+    margin-right: 0.625rem;
+  }
+}

@@ -1,0 +1,21 @@
+.container {
+  width: 1170px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.cardInHome {
+  display: grid;
+  grid-template-columns: 6fr 6fr;
+
+  .card {
+    .text {
+      p {
+        color: #738f93;
+        font-size: 20px;
+        margin: 35px 0 0;
+        line-height: 1.6;
+      }
+    }
+  }
+}

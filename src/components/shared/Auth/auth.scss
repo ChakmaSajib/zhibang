@@ -1,0 +1,36 @@
+.auth {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  a {
+    margin-right: 16px;
+  }
+}
+
+.loged-in-user {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+
+  .notification-icon {
+    color: #738f93;
+    cursor: pointer;
+    margin-right: 1rem;
+
+    &:hover {
+      color: #006621;
+    }
+  }
+  .user {
+    width: 2rem;
+    height: 2rem;
+    background-color: #1ba94c;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 2rem;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,31 @@
+.notification-panel {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.34);
+  width: 18.75rem;
+  list-style-type: none;
+  position: absolute;
+  top: 3.125rem;
+  li:last-child {
+    a {
+      color: $primaryBlue;
+      padding: 0.5rem 1.25rem;
+      border-bottom: 0;
+      text-align: center;
+    }
+  }
+  a {
+    text-decoration: none;
+    padding: 1.25rem;
+    color: $primaryBlack;
+    font-size: 0.875rem;
+    border-bottom: 1px solid $extraLight;
+    display: block;
+    margin: 0;
+    span {
+      color: $primaryBlue;
+    }
+    &:focus,
+    &:hover {
+      background-color: $light;
+    }
+  }
+}

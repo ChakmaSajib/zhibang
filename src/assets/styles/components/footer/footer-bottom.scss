@@ -1,0 +1,25 @@
+.footer-bottom {
+  height: 8.312rem;
+  display: flex;
+  justify-content: space-between;
+}
+.footer-bottom-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  li {
+    list-style-type: none;
+    a {
+      color: white;
+      text-decoration: none;
+    }
+    margin-left: 1rem;
+  }
+}
+.footer-bottom-right {
+  p {
+    color: #fff;
+    font-size: 1rem;
+  }
+}

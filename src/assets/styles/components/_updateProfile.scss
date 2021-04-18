@@ -1,0 +1,80 @@
+.update-profile__form {
+  input[type='text'],
+  input[type='email'],
+  input[type='password'] {
+    height: 2rem;
+    padding: 0 0.625rem;
+    color: $lightGrey;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    outline: 0;
+    border: 1px solid $extraLight;
+    width: calc(100% - 1.5rem);
+  }
+  label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    span {
+      margin-right: 4rem;
+      display: flex;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    svg {
+      margin-right: 0.625rem;
+      height: 1.5rem;
+
+      color: $lightGrey;
+    }
+    input[type='text'],
+    input[type='email'],
+    input[type='password'] {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.update-profile__container {
+  margin: 2.25rem 0;
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  border: 1px solid $extraLight;
+}
+
+.update-profile__left-side {
+  border-right: 1px solid $extraLight;
+}
+.update_profile__info-section {
+  margin-bottom: 2.5rem;
+  h3 {
+    font-size: 1.125rem;
+    $color: $primaryBlack;
+    line-height: 1.6;
+    margin: 0;
+    font-weight: 300;
+    border-top: 1px solid $extraLight;
+    padding: 1.125rem;
+  }
+  &:first-child h3 {
+    border-top: 0;
+  }
+  .content {
+    padding: 0 1.25rem;
+  }
+}
+
+.update-profile__right-side {
+  .update_profile__info-section {
+    h3 {
+      border-bottom: 0;
+    }
+  }
+}
+
+.update-profile__form-button {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid $extraLight;
+}

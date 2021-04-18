@@ -1,0 +1,46 @@
+.questions-table {
+  width: 100%;
+  margin-top: 5rem;
+}
+
+.table {
+  font-family: 'Poppins', sans-serif;
+  border: 1px solid $extraLight;
+  width: 100%;
+
+  td {
+    border-bottom: 1px solid $extraLight;
+    padding: 0.5rem 1.125rem;
+    border-right: 1px solid $extraLight;
+  }
+  thead td:last-child,
+  tbody td:last-child {
+    border-right: 0;
+  }
+
+  thead {
+    td {
+      font-size: 1.125rem;
+      color: $lightGrey;
+      line-height: 1;
+    }
+  }
+  tbody {
+    td {
+      font-size: 1rem;
+      color: $primaryBlack;
+      line-height: 1.6;
+
+      &:first-child,
+      &:last-child {
+        color: $primaryBlue;
+      }
+      &:last-child {
+        cursor: pointer;
+      }
+    }
+    tr:last-child td {
+      border-bottom: 0;
+    }
+  }
+}
