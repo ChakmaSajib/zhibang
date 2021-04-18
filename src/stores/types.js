@@ -4,3 +4,5 @@ export const UPDATE_HR = 'UPDATE_HR';
 export const DELETE_HR = 'DELETE_HR';
 export const DELETE_ALL_HRS = 'DELETE_ALL_HRS';
 export const COUNT_CHANGE = 'COUNTER_CHANGE';
+export const GET_USERS = 'GET_USERS';
+export const USERS_ERROR = 'USERS_ERROR';

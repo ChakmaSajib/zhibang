@@ -1,4 +1,4 @@
-import { COUNT_CHANGE } from './types';
+import { COUNT_CHANGE } from '../types';
 
 function changeCount(count) {
   return {

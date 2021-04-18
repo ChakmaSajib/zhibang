@@ -1,8 +1,7 @@
 import http from '../http-common';
-
 class HrDataService {
   getAll() {
-    return http.get('/hrinfo');
+    return http.get('/hrs/hr');
   }
 
   get(id) {

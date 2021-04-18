@@ -4,7 +4,8 @@ import { authentication } from './authenticationReducer';
 import { registration } from './registerReducer';
 import countReducer from './countReducer';
 import { alert } from './alertReducer';
-import hr from './hr.reducer';
+import hrReducer from './hrsReducer';
+import userReducer from './usersReducer';
 
 const createCombinedReducers = (history) =>
   combineReducers({
@@ -12,8 +13,9 @@ const createCombinedReducers = (history) =>
     authentication,
     registration,
     alert,
-    hr,
-    count: countReducer
+    hrsList: hrReducer,
+    count: countReducer,
+    usersList: userReducer
   });
 
 export default createCombinedReducers;

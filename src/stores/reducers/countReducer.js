@@ -1,4 +1,4 @@
-import { COUNT_CHANGE } from '../actions/types';
+import { COUNT_CHANGE } from '../types';
 
 const initialState = {
   count: 0

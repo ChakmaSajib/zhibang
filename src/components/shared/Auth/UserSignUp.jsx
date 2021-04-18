@@ -4,6 +4,7 @@ import { TextField, Paper, Grid, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link, useHistory } from 'react-router-dom';
 import NotificationOverlay from '../../NotificationOverlay';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   userSignUpContainer: {
@@ -52,8 +53,19 @@ export default function UserSignUp() {
     console.log('submit button is clicked');
 
     if (data) {
-      alert('sucessful');
-      setTimeout(() => history.push('/notify'), 2000);
+      try {
+        const response = axios.post('http://localhost:8080/users/register', {
+          username: 'axios',
+          password: 'axios',
+          email: 'axiso@gmail.com',
+          phone: '6565'
+        });
+        console.log(`this is the response ${response}`);
+      } catch (error) {
+        console.log(error);
+      }
+
+      // setTimeout(() => history.push('/notify'), 2000);
     }
 
     // if (data) {
