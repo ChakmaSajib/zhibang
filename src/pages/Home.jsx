@@ -5,15 +5,15 @@ import Footer from '../components/shared/Footer';
 import Header from '../components/shared/Header';
 import HowItWorks from '../components/HowItWorks/HowItWorks';
 import HrInfoInHomePage from '../components/HrList/HrInfoInHomePage';
+import ZhibangHome from '../components/HomePage/ZhibangHome';
 
 export default function Home() {
   return (
     <React.Fragment>
       <Header />
-      <Content />
-      <CardsInHome />
+      <ZhibangHome />
       <HrInfoInHomePage />
-      <HowItWorks />
+      {/* <HowItWorks /> */}
       <Footer />
     </React.Fragment>
   );

@@ -1,18 +1,8 @@
 import React from 'react';
 import Logo from '../../../assets/img/app-logo.svg';
-// import './footer.scss';
+import './footer.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faQq, faWeixin } from '@fortawesome/free-brands-svg-icons';
-// export default function Footer() {
-//   return (
-//     <div className='footer_container'>
-//       <div className='footer'>
-//         <img src={Logo} />
-//         <h4>All rights reserved</h4>
-//       </div>
-//     </div>
-//   );
-// }
 
 export default function Footer() {
   return (
@@ -29,7 +19,12 @@ export default function Footer() {
             <FontAwesomeIcon icon={faWeixin} />
           </div>
         </div>
+      </div>
 
+      {/** Border */}
+      <hr />
+
+      <div className='container'>
         <div className='footer-bottom'>
           <div className='footer-bottom-left'>
             <li>

@@ -1,8 +1,12 @@
 $primaryBlack: #39424e;
+$lightColor: #f2f2f2;
 .container {
   width: 1170px;
   padding: 0 15px;
   margin: 0 auto;
+}
+.side-header {
+  background-color: $lightColor;
 }
 .header {
   height: 70px;

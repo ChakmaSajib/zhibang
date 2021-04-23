@@ -1,15 +1,19 @@
 import React from 'react';
 
-export default function DashboardRightSectionHeader({ td1, td2 }) {
+export default function AdminDashboardRightSectionHeader({ td1, td2 }) {
   return (
     <React.Fragment>
       <div className='questions-table'>
         <table className='table'>
           <thead>
-            <tr>{td1.length && td1.map((td) => <td>{td}</td>)}</tr>
+            <tr>
+              <td>Type</td>
+            </tr>
           </thead>
           <tbody>
-            <tr>{td1.length && td2.map((td) => <td>{td}</td>)}</tr>
+            <tr>
+              <td>Student</td>
+            </tr>
           </tbody>
         </table>
       </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import ButtonPrimary from '../Buttons/ButtonPrimary';
 import { Link } from 'react-router-dom';
+import StarRatingComponent from 'react-star-rating-component';
 function HrProfileWithImage({
   image,
   name,
@@ -9,6 +10,7 @@ function HrProfileWithImage({
   totalMock,
   stars,
   link,
+  id,
   company
 }) {
   return (
@@ -20,9 +22,16 @@ function HrProfileWithImage({
         <p>{experience}</p>
         <p>{totalCV}</p>
         <p>{totalMock}</p>
-        <p>{stars}</p>
-
-        <Link to='/hr/name'>
+        <p>
+          <StarRatingComponent
+            name='rate2'
+            editing={false}
+            starCount={stars}
+            starCount={5}
+            value={8}
+          />
+        </p>
+        <Link to={`/hr/${id}`}>
           <ButtonPrimary text='Choose' />
         </Link>
       </div>

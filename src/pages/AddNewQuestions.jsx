@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
-import { faEye, faPlusCircle, faSave } from '@fortawesome/free-solid-svg-icons';
 
 import {
-  faFileAlt,
+  faEye,
+  faPlusCircle,
+  faSave,
   faUserFriends,
-  faQuestionCircle,
-  faStarHalfAlt,
-  faFileExport,
-  faCheckCircle,
-  faTimesCircle,
-  faSwimmer
+  faAddressBook
 } from '@fortawesome/free-solid-svg-icons';
 import InputType from '../components/InputType';
 import Add from '../components/Add';
 import ButtonSecondaryIcon from '../components/Buttons/ButtonSecondaryIcon';
 import ButtonSecondaryIconBlack from '../components/Buttons/ButtonSecondaryIconBlack';
+import DashboardRightSectionHeader from '../components/DashboardRightSectionHeader';
+import Header from '../components/shared/Header';
 
 function DashboardRightSection({ heading, text }) {
   return (
@@ -68,114 +66,73 @@ function DashboardRightSection({ heading, text }) {
   );
 }
 
-function DashboardDropdownMenu({ icon, link, content }) {
-  return (
-    <div className='dashboard-dropdown-menu'>
-      <DashboardSideNavbar icon={faFileExport} content='Requested' />
-      <DashboardSideNavbar icon={faSwimmer} content='Accepted' />
-      <DashboardSideNavbar icon={faCheckCircle} content='Completed' />
-      <DashboardSideNavbar icon={faTimesCircle} content='Rejected' />
-    </div>
-  );
-}
-
-function MockDropDownMenu({ icon, link, content }) {
-  return (
-    <div className='dashboard-dropdown-menu'>
-      <DashboardSideNavbar icon={faFileExport} content='Requested' />
-      <DashboardSideNavbar icon={faSwimmer} content='Accepted' />
-      <DashboardSideNavbar icon={faCheckCircle} content='Completed' />
-      <DashboardSideNavbar icon={faTimesCircle} content='Rejected' />
-    </div>
-  );
-}
-
-function DashboardSideNavbar({ icon, content, link }) {
-  return (
-    <React.Fragment>
-      <li>
-        <Link to={link}>
-          <span>
-            <FontAwesomeIcon icon={icon} />
-          </span>
-
-          {content}
-        </Link>
-      </li>
-    </React.Fragment>
-  );
-}
-
-function Dashboard() {
-  const [openCvMenu, setCvMenu] = useState(false);
-  const [openMockMenu, setMockMenu] = useState(false);
-  const [openInterviewMenu, setInterviewMenu] = useState(false);
-  const [openRightSection, setRightSection] = useState(false);
-
-  const showCheckMenu = () => setCvMenu(!openCvMenu);
-  const showMockMenu = () => setMockMenu(!openMockMenu);
-  const showInterviewMenu = () => setInterviewMenu(!openInterviewMenu);
-  const handleRequestedClick = () => setRightSection(!openRightSection);
+function AdminDashboard() {
+  const [openAddQuestion, setAddQuestion] = useState(false);
+  const showAddQuestion = () => setAddQuestion(!openAddQuestion);
 
   const closeMenu = () => {
-    setCvMenu(false);
+    setAddQuestion(false);
     document.removeEventListener('click', closeMenu);
   };
 
   React.useEffect(() => {
-    if (openCvMenu === true) {
+    if (openAddQuestion === true) {
       document.addEventListener('click', closeMenu);
-      setMockMenu(false);
-      setInterviewMenu(false);
     }
-  }, [openCvMenu, openMockMenu, openInterviewMenu]);
+  }, [openAddQuestion]);
 
   return (
     <div className='container'>
       <div className='dashboard'>
         <div className='dashboard-side-navbar'>
-          <li onClick={showCheckMenu}>
-            <Link>
+          <li>
+            <Link to='/admindashboard/totalusers'>
               <span>
-                <FontAwesomeIcon icon={faFileAlt} />
+                <FontAwesomeIcon icon={faUserFriends} />
               </span>
-              Check CV
+              Total Users
             </Link>
           </li>
-
-          {/* {openCvMenu ? <DashboardDropdownMenu /> : null} */}
-          {openCvMenu ? (
-            <div className='dashboard-dropdown-menu'>
-              <li onClick={handleRequestedClick}>
-                <Link>
-                  <span>
-                    <FontAwesomeIcon icon={faFileExport} />
-                  </span>
-                  Requested
-                </Link>
-              </li>
-            </div>
-          ) : null}
-
-          <li onClick={showMockMenu}>
+          <li onClick={showAddQuestion}>
             <Link>
               <span>
                 <FontAwesomeIcon icon={faUserFriends} />
               </span>
-              Add Question
+              Interview Questions
             </Link>
           </li>
-          {openMockMenu ? <MockDropDownMenu /> : null}
-
-          <DashboardSideNavbar
-            icon={faQuestionCircle}
-            content='Interview Questions'
-          />
-          <DashboardSideNavbar icon={faStarHalfAlt} content='My feedbacks' />
+          {openAddQuestion ? (
+            <InterviewQuestionsDropdown
+              content='Add Questions'
+              link='/admin/addquestions'
+            />
+          ) : null}
+          <li>
+            <Link>
+              <span>
+                <FontAwesomeIcon icon={faUserFriends} />
+              </span>
+              Support
+            </Link>
+          </li>
         </div>
-
-        <DashboardRightSection heading='Add new interview question' />
+        <DashboardRightSection heading='Add New Interview Questions' />
       </div>
+    </div>
+  );
+}
+
+function InterviewQuestionsDropdown({ icon, link, content }) {
+  return (
+    <div className='dashboard-dropdown-menu'>
+      <li>
+        <Link to={link}>
+          <span>
+            <FontAwesomeIcon icon={faAddressBook} />
+          </span>
+          Add Questions
+        </Link>
+      </li>
     </div>
   );
 }
@@ -183,7 +140,8 @@ function Dashboard() {
 export default function AddNewQuestion() {
   return (
     <div>
-      <Dashboard />
+      <Header />
+      <AdminDashboard />
     </div>
   );
 }

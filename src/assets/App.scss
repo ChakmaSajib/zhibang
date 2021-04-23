@@ -11,7 +11,6 @@
 @import './styles/jobInterviewQuestions/job-interview';
 @import './styles/components/footer/footer-bottom.scss';
 @import './styles/components/footer/footer-header.scss';
-@import './styles/components/footer/footer.scss';
 @import './styles/components/overlayBox';
 @import './styles/components/mockRightSectionHeader';
 @import './styles/components/add';
@@ -20,17 +19,4 @@
 @import './styles/components/exams';
 @import './styles/components/zhibangForm';
 @import './styles/components/previousQuestion';
-
-// @import './components/shared/Menu/menu';
-// @import './components/HrShortInfo/hrinfoinhomepage';
-// // @import '../src/assets//styles/logo';
-// // @import '../src/assets//styles/header';
-// @import '../src/assets//styles/menu';
-// @import '../src/assets//styles/auth';
-// @import '../src/assets//styles/heroimage';
-// @import '../src/assets//styles/card';
-// @import '../src/assets//styles/cardInHome';
-// @import '../src/assets//styles/content';
-// // @import '../src/assets//styles/howItWorks';
-// @import '../src/assets//styles/hrinfoinhomepage';
-// // @import '../src/assets//styles/footer';
+@import './styles/components/HomeHeroSection.scss';

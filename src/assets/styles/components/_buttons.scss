@@ -7,7 +7,7 @@ button.z-btn {
   border: 0;
   padding: 0 1rem;
   color: #fff;
-  box-shadow: 0 1px 6px 0 #0000008a;
+  // box-shadow: 0 1px 6px 0 #0000008a;
   background-color: #888;
   margin-bottom: 0.5rem;
   border-radius: 3px;
@@ -20,7 +20,8 @@ button.z-btn {
 
     &:focus,
     &:hover {
-      box-shadow: 0 1px 4px 0 #0000008a;
+      background-color: #006621;
+      // box-shadow: 0 1px 4px 0 #0000008a;
     }
   }
   &.primary.warning {

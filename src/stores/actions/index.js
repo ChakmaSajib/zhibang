@@ -1,2 +1,3 @@
-export * from './alert.actions';
+export * from './alertActions';
 export * from './hrsActions';
+export * from './usersActions';

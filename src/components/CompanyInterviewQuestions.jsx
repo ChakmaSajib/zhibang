@@ -7,6 +7,10 @@ import {
   Button,
   CardActions
 } from '@material-ui/core';
+import ButtonSecondary from './Buttons/ButtonSecondary';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock, faBook } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   questionCards: {
@@ -24,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     transform: 'scale(0.8)'
   },
   title: {
-    fontSize: 14
+    fontSize: 15
   },
   pos: {
     marginBottom: 12
@@ -87,10 +91,13 @@ const useStyles = makeStyles((theme) => ({
     color: '#fff',
     width: '5rem',
     marginRight: '0.75rem'
+  },
+  svg: {
+    marginRight: '1rem'
   }
 }));
 
-export default function AnotherInterview() {
+export default function CompanyInterviewQuestions() {
   const classes = useStyles();
   const [chipData, setChipData] = React.useState([
     { key: 0, label: 'Xiaomi' },
@@ -111,16 +118,12 @@ export default function AnotherInterview() {
           <span className={classes.span}>Company</span>
         </div>
         <div className='right'>
-          <TextWithImage text='PHP Developer' />
-          <TextWithImage text='PHP Developer' />
-          <TextWithImage text='PHP Developer' />
-          <TextWithImage text='PHP Developer' />
-          <TextWithImage text='PHP Developer' />
-          <TextWithImage text='PHP Developer' />
-          <TextWithImage text='PHP Developer' />
-          <TextWithImage text='PHP Developer' />
-          <TextWithImage text='PHP Developer' />
-          <TextWithImage text='PHP Developer' />
+          <TextWithImage text='Baidu' />
+          <TextWithImage text='Google' />
+          <TextWithImage text='Amazon' />
+          <TextWithImage text='Apple' />
+          <TextWithImage text='Yahoo' />
+          <TextWithImage text='Zoom' />
         </div>
       </div>
 
@@ -130,10 +133,10 @@ export default function AnotherInterview() {
         </div>
         <div className='right'>
           <TextWithImage text='PHP Developer' />
-          <TextWithImage text='PHP Developer' />
-          <TextWithImage text='PHP Developer' />
-          <TextWithImage text='PHP Developer' />
-          <TextWithImage text='PHP Developer' />
+          <TextWithImage text='Golang Developer' />
+          <TextWithImage text='Java Developer' />
+          <TextWithImage text='Ruby and Rails Developer' />
+          <TextWithImage text='React Native Developer' />
         </div>
       </div>
 
@@ -149,17 +152,29 @@ export default function AnotherInterview() {
         </div>
       </div>
       <div className={classes.questionCards}>
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
+        <Cards company='Baidu' problemSet='10' time='2.00 Hours' />
+        <Cards
+          company='Google Interview Question'
+          problemSet='10'
+          time='2.00 Hours'
+        />
+        <Cards
+          company='Amazon Interview Question'
+          problemSet='10'
+          time='2.00 Hours'
+        />
+        <Cards company='Tencent' problemSet='10' time='2.00 Hours' />
 
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
+        <Cards company='Facebook' problemSet='10' time='2.00 Hours' />
+        <Cards company='Bytedance' problemSet='10' time='2.00 Hours' />
+        <Cards company='Zoom' problemSet='10' time='2.00 Hours' />
+        <Cards company='Tesla ' problemSet='10' time='2.00 Hours' />
+        <Cards company='SpaceX' problemSet='10' time='2.00 Hours' />
+        <Cards
+          company='Wechat Interview Question'
+          problemSet='10'
+          time='2.00 Hours'
+        />
       </div>
     </div>
   );
@@ -177,31 +192,34 @@ function TextWithImage({ text, image }) {
   );
 }
 
-function Cards() {
+function Cards({ company, problemSet, time }) {
   const classes = useStyles();
   return (
     <div>
       <Card className={classes.cards} variant='outlined'>
         <CardContent>
           <Typography
+            component='h2'
             className={classes.title}
             color='textSecondary'
             gutterBottom
           >
-            Word of the Day
+            {company}
           </Typography>
 
-          <Typography className={classes.pos} color='textSecondary'>
-            adjective
+          <Typography variant='body2' component='p' color='textSecondary'>
+            <FontAwesomeIcon icon={faBook} className={classes.svg} />
+            Problem Sets : {problemSet}
           </Typography>
-          <Typography variant='body2' component='p'>
-            well meaning and kindly.
-            <br />
-            {'"a benevolent smile"'}
+          <Typography>
+            <FontAwesomeIcon icon={faClock} className={classes.svg} />
+            {time}
           </Typography>
         </CardContent>
-        <CardActions>
-          <Button size='small'>Learn More</Button>
+        <CardActions style={{ justifyContent: 'center' }}>
+          <Link to='/exam'>
+            <ButtonSecondary text='Start' />
+          </Link>
         </CardActions>
       </Card>
     </div>

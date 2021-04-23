@@ -5,6 +5,7 @@ import HrProfile from '../../assets/img/hr-profile.jpg';
 import ButtonSecondaryBlack from '../Buttons/ButtonSecondaryBlack';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import StarRatingComponent from 'react-star-rating-component';
+import Booking from '../Booking/Booking';
 import {
   faEnvelope,
   faPhoneSquareAlt
@@ -13,16 +14,21 @@ import { useParams, Link } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 
-export default function HrProfileDetails(props) {
+export default function SingleHrProfile(props) {
   const authentication = useSelector((state) => state.authentication);
-  const [toggle, setToggle] = useState(false);
+
+  const [open, setOpen] = useState(false);
   const { id } = useParams();
   console.log(id);
+  const handleClickOpen = () => {
+    console.log('single ');
+    setOpen(true);
+  };
 
-  function handleClick() {
-    console.log('clicked');
-    setToggle(true);
-  }
+  const handleClose = (value) => {
+    setOpen(false);
+  };
+
   return (
     <div className='container'>
       <div className='hr-profile-detail'>
@@ -30,11 +36,7 @@ export default function HrProfileDetails(props) {
           <div className='hr-profile-header-left'>
             <img src={HrProfile} />
             <div className='hr-profile-text'>
-              <h1>
-                {authentication.user.data.hasOwnProperty('hr')
-                  ? authentication.user.data.hr.hrname
-                  : authentication.user.data.user.username}
-              </h1>
+              <h1>HR name goes here</h1>
               <p>Head of HR, NFLabs</p>
               <StarRatingComponent
                 name='rate2'
@@ -44,23 +46,18 @@ export default function HrProfileDetails(props) {
               />
             </div>
           </div>
-          {/* if user is logined then only he/she could see update profile button */}
-          {authentication.loggedIn ? (
-            <div className='hr-profile-header-right'>
-              <Link to='/updateprofile'>
-                <ButtonSecondary text='Update Profile' />
-              </Link>
-            </div>
-          ) : (
-            <div className='hr-profile-header-right'>
-              <ButtonSecondary text='Send Message' />
-              <ButtonSecondary text='Send CV' />
-              <ButtonSecondaryBlack
-                text='Mock Interview'
-                onClick={() => console.log('You clicked on the pink circle!')}
-              />
-            </div>
-          )}
+
+          <div className='hr-profile-header-right'>
+            <ButtonSecondary text='Send Message' />
+            <ButtonSecondary text='Send CV' />
+            <ButtonSecondaryBlack
+              text='Mock Interview '
+              onClick={handleClickOpen}
+              //   onClick={() => console.log('You clicked on the pink circle!')}
+            />
+
+            <Booking open={open} onClose={handleClose} />
+          </div>
         </div>
         <div className='hr-profile-body'>
           <div className='hr-profile-body-left'>

@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { TextField, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, logout } from '../../../stores/actions/usersActions';
+import 'react-notifications-component/dist/theme.css';
+import 'animate.css';
+import { store } from 'react-notifications-component';
 
 const useStyles = makeStyles((theme) => ({
   userSignUpContainer: {
@@ -39,24 +44,42 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function UserSignUp() {
+export default function Login() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const message = useSelector((state) => state.authentication.message);
+
+  // reset login status
+  useEffect(() => {
+    dispatch(logout());
+  }, []);
+
   const {
     handleSubmit,
     control,
     formState: { errors }
   } = useForm();
+
   const onSubmit = (data) => {
     console.log('submit button is clicked');
+    const { email, password } = data;
     alert(JSON.stringify(data));
+    const { from } = location.state || { from: { pathname: '/app' } };
+    dispatch(login(email, password, from));
 
-    // if (data) {
-    //     const { personalPhone, officialPhone, email } = data;
-    //     dispatch(setPersonalPhone(personalPhone));
-    //     dispatch(setOfficialPhone(officialPhone));
-    //     dispatch(setEmail(email));
-    //     setVaild(true);
-    // }
+    store.addNotification({
+      title: 'Login Notification',
+      message: message || 'Success',
+      type: 'success', // 'default', 'success', 'info', 'warning'
+      insert: 'top',
+      container: 'bottom-right', // where to position the notifications
+      animationIn: ['animated', 'fadeIn'], // animate.css classes that's applied
+      animationOut: ['animated', 'fadeOut'], // animate.css classes that's applied
+      dismiss: {
+        duration: 5000
+      }
+    });
   };
   return (
     <div className='container'>
@@ -66,8 +89,8 @@ export default function UserSignUp() {
             name='email'
             control={control}
             rules={{
-              required: true,
-              pattern: /[a-zA-Z0-9]+[.]?([a-zA-Z0-9]+)?[@][a-z]{3,9}[.][a-z]{2,5}/g
+              required: true
+              // pattern: /[a-zA-Z0-9]+[.]?([a-zA-Z0-9]+)?[@][a-z]{3,9}[.][a-z]{2,5}/g
             }}
             render={({ field }) => (
               <TextField

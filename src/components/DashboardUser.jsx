@@ -135,6 +135,9 @@ function Dashboard() {
           />
           <DashboardSideNavbar icon={faStarHalfAlt} content='My feedbacks' />
         </div>
+        <div className='dashboard-right-section'>
+          <h2 style={{ color: '#1BA94C' }}> Welcome to User Dashboard</h2>
+        </div>
         {openRightSection && (
           <DashboardRightSection
             heading='Sajib CHakma'

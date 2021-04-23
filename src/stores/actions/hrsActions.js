@@ -1,6 +1,14 @@
-import { CREATE_HR, RETRIEVE_HRS } from '../types';
-
+import { useHistory } from 'react-router';
 import HrDataService from '../../Api/services/hr.service';
+import { history } from '../store';
+
+import {
+  CREATE_HR,
+  RETRIEVE_HRS,
+  REGISTER_REQUEST,
+  REGISTER_SUCCESS,
+  REGISTER_FAILURE
+} from '../types';
 
 // export const createHR = (
 //   name,
@@ -46,6 +54,44 @@ export const getAllHrs = () => async (dispatch) => {
   }
 };
 
+export const registerHr = (
+  hrname,
+  cpname,
+  email,
+  phone,
+  cpaddr,
+  password,
+  major
+) => async (dispatch) => {
+  // const history = useHistory();
+  console.log(hrname);
+  try {
+    console.log(`this is the data ${hrname}`);
+
+    const res = await HrDataService.create(
+      hrname,
+      cpname,
+      email,
+      phone,
+      cpaddr,
+      password,
+      major
+    );
+    console.log(res);
+    console.log(`this is the response ${res.data}`);
+
+    dispatch({
+      type: REGISTER_SUCCESS,
+      payload: res.data
+    });
+    history.push('/signin');
+    // dispatch(alertActions.success('Registration successful'));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const hrActions = {
-  getAllHrs
+  getAllHrs,
+  registerHr
 };

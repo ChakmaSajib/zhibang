@@ -1,0 +1,42 @@
+.zhibang__home {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 12.5rem;
+
+  .left {
+    h1 {
+      margin-top: 6.25rem;
+      font-size: 3rem;
+      line-height: 1.5;
+      color: #39424e;
+      margin-bottom: 3rem;
+      font-family: Poppins;
+    }
+  }
+  .right {
+    display: flex;
+    justify-content: center;
+    img {
+      margin-top: 6rem;
+      height: 15.625rem;
+      width: 15.625rem;
+    }
+    .bottom__image {
+      margin-top: 16rem;
+      margin-left: -5.625rem;
+    }
+  }
+
+  .buttons {
+  }
+}
+
+.zhibang__partners {
+  display: flex;
+  margin-top: 6rem;
+  img {
+    margin-right: 1rem;
+    height: 2rem;
+    margin-bottom: 0.625rem;
+  }
+}

@@ -1,8 +1,10 @@
-import { CREATE_HR, RETRIEVE_HRS } from '../types';
+import { CREATE_HR, RETRIEVE_HRS, REGISTER_SUCCESS } from '../types';
 
 const initialState = {
   hrs: [],
-  loading: true
+  loading: true,
+  success: false,
+  message: ''
 };
 
 function HrReducer(state = initialState, action) {
@@ -13,6 +15,12 @@ function HrReducer(state = initialState, action) {
       return {
         ...state,
         hrs: payload
+      };
+
+    case REGISTER_SUCCESS:
+      return {
+        success: true,
+        message: payload.msg
       };
 
     case RETRIEVE_HRS:

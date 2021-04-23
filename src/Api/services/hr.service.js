@@ -1,15 +1,23 @@
 import http from '../http-common';
 class HrDataService {
   getAll() {
-    return http.get('/hrs/hr');
+    return http.get('/users/hrinfo');
   }
 
   get(id) {
     return http.get(`/hrinfo/${id}`);
   }
 
-  create(data) {
-    return http.post('/tutorials', data);
+  create({ hrname, cpname, email, phone, cpaddr, password, major }) {
+    return http.post('/hrs/register', {
+      hrname,
+      cpname,
+      email,
+      phone,
+      cpaddr,
+      password,
+      major
+    });
   }
 
   update(id, data) {

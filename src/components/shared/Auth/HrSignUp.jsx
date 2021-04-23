@@ -44,8 +44,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function HrSignUp() {
   const dispatch = useDispatch();
-  const count = useSelector((state) => state.counter);
-  console.log(dispatch);
+
+  const hrsList = useSelector((state) => state.hrsList);
+  const { message } = hrsList;
+
+  console.log(message);
+
   const classes = useStyles();
   const {
     handleSubmit,
@@ -53,18 +57,27 @@ export default function HrSignUp() {
     formState: { errors }
   } = useForm();
   const onSubmit = (data) => {
-    console.log('submit button is clicked');
     alert(JSON.stringify(data));
-    dispatch(hrActions.createHR(data));
+    const { name, company, companyAddress, email, password, department } = data;
+    dispatch(
+      hrActions.registerHr({
+        hrname: name,
+        password: password,
+        cpname: company,
+        cpaddr: companyAddress,
+        email: email,
+        major: department
+      })
+    );
   };
   return (
     <div className='container'>
       <div className={classes.userSignUpContainer}>
+        {message && <h2>{message}</h2>}
         <form onSubmit={handleSubmit(onSubmit)} className={classes.signUpForm}>
           <Controller
             name='name'
             control={control}
-            defaultValue={false}
             rules={{ required: true, pattern: /^[aA-zZ]*$/ }}
             render={({ field }) => {
               return (
@@ -112,14 +125,36 @@ export default function HrSignUp() {
               Your email address is required
             </span>
           )}
+          <Controller
+            className={classes.textField}
+            name='password'
+            control={control}
+            rules={{
+              required: true
+            }}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                error={errors.password}
+                className={classes.textField}
+                variant='outlined'
+                id='password'
+                label='Password'
+                type='password'
+                autoComplete='password'
+                placeholder='Password'
+              />
+            )}
+          />
+          {errors.password && (
+            <span role='alert' class={classes.span}>
+              Please input your password
+            </span>
+          )}
 
           <Controller
             name='department'
             control={control}
-            rules={{
-              required: true,
-              pattern: /[a-zA-Z0-9]+[.]?([a-zA-Z0-9]+)?[@][a-z]{3,9}[.][a-z]{2,5}/g
-            }}
             render={({ field }) => (
               <TextField
                 className={classes.textField}
@@ -192,59 +227,6 @@ export default function HrSignUp() {
               Your company address is required
             </span>
           )}
-          <Controller
-            className={classes.textField}
-            name='password'
-            control={control}
-            rules={{
-              required: true
-            }}
-            render={({ field }) => (
-              <TextField
-                {...field}
-                error={errors.password}
-                className={classes.textField}
-                variant='outlined'
-                id='password'
-                label='Password'
-                type='password'
-                autoComplete='password'
-                placeholder='Password'
-              />
-            )}
-          />
-          {errors.password && (
-            <span role='alert' class={classes.span}>
-              Please input your password
-            </span>
-          )}
-
-          <Controller
-            name='password1'
-            control={control}
-            rules={{
-              required: true
-            }}
-            render={({ field }) => (
-              <TextField
-                {...field}
-                error={errors.password1}
-                className={classes.textField}
-                variant='outlined'
-                id='password1'
-                label='Password'
-                type='password'
-                autoComplete='password1'
-                placeholder='Re-type Password'
-              />
-            )}
-          />
-          {errors.password1 && (
-            <span role='alert' class={classes.span}>
-              Please input your password
-            </span>
-          )}
-
           <Button
             type='submit'
             variant='contained'

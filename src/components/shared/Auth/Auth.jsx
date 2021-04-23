@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import ButtonPrimary from '../../Buttons/ButtonPrimary';
-import { NavLink, useHistory } from 'react-router-dom';
-import auth from '../../../mock/auth';
+import { NavLink, Link } from 'react-router-dom';
 import './auth.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
-import DropDownMenu from '../../DropDownMenu';
-import NotificationPanel from '../../NotificationPanel';
 
-const authenticated = true;
+import NotificationPanel from '../../NotificationPanel';
+import { useSelector } from 'react-redux';
+
 var dropdownMenu = null;
 
 export default function Auth(props) {
+  const loggedIn = useSelector((state) => state.authentication.loggedIn);
+
   return (
     <div className='auth'>
-      {authenticated ? <LogedInUser /> : <LoginSignUpUser />}
+      {loggedIn ? <LogedInUser /> : <LoginSignUpUser />}
     </div>
   );
 }
@@ -84,6 +85,7 @@ function LogedInUser() {
 }
 
 function DropDown() {
+  const authentication = useSelector((state) => state.authentication);
   return (
     <div
       className='dropdown'
@@ -93,14 +95,61 @@ function DropDown() {
         console.log(dropdownMenu);
       }}
     >
-      <li>
+      {/** Based on user is route will be also changed */}
+      {authentication.user.data.hasOwnProperty('hr') && (
+        <li>
+          <a href='/hrprofile'>My Profile</a>
+        </li>
+      )}
+
+      {authentication.user.data.hasOwnProperty('admin') && (
+        <li>
+          <a href='/adminprofile'>My Profile</a>
+        </li>
+      )}
+
+      {authentication.user.data.hasOwnProperty('user') && (
+        <li>
+          <a href='/userprofile'>My Profile</a>
+        </li>
+      )}
+      {/* <li>
         <a href='/profile'>My Profile</a>
-      </li>
+      </li> */}
+
+      {/** When user is hr - route will be also changed */}
+      {/* {(() => {
+        switch (authentication.user.data.hasOwnProperty('hr')) {
+          case 'admin':
+            return '#FF0000';
+          case 'hr':
+            return '#00FF00';
+          case 'user':
+            return '#0000FF';
+          default:
+            return '#FFFFFF';
+        }
+      })()} */}
+      {authentication.user.data.hasOwnProperty('hr') && (
+        <li>
+          <a href='/hrdashboard'>My Dashboard</a>
+        </li>
+      )}
+
+      {authentication.user.data.hasOwnProperty('admin') && (
+        <li>
+          <a href='/admindashboard'>My Dashboard</a>
+        </li>
+      )}
+
+      {authentication.user.data.hasOwnProperty('user') && (
+        <li>
+          <a href='/userdashboard'>My Dashboard</a>
+        </li>
+      )}
+
       <li>
-        <a href='/dashboard'>My Dashboard</a>
-      </li>
-      <li>
-        <a href=''>Logout</a>
+        <Link to='/signin'>Logout</Link>
       </li>
     </div>
   );

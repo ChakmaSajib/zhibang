@@ -4,6 +4,7 @@ import ButtonSecondary from '../components/Buttons/ButtonSecondary';
 import HrProfile from '../assets/img/hr-profile.jpg';
 import ButtonSecondaryBlack from '../components/Buttons/ButtonSecondaryBlack';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import StarRatingComponent from 'react-star-rating-component';
 import {
   faEnvelope,
   faPhoneSquareAlt
@@ -20,9 +21,9 @@ export default function UserProfileDetail(props) {
           <div className='hr-profile-header-left'>
             <img src={HrProfile} />
             <div className='hr-profile-text'>
+              <h1>USER name</h1>
               <h1>Zihui Park</h1>
               <p>Head of HR, NFLabs</p>
-              <h4>***</h4>
             </div>
           </div>
           <div className='hr-profile-header-right'>

@@ -1,5 +1,5 @@
 .footer-bottom {
-  height: 8.312rem;
+  padding: 1rem 0;
   display: flex;
   justify-content: space-between;
 }
@@ -11,15 +11,15 @@
   li {
     list-style-type: none;
     a {
-      color: white;
       text-decoration: none;
+      color: $primaryBlack;
     }
     margin-left: 1rem;
   }
 }
 .footer-bottom-right {
   p {
-    color: #fff;
+    color: $primaryBlack;
     font-size: 1rem;
   }
 }

@@ -15,7 +15,7 @@ export default function Exam() {
       <div className='container'>
         <div className='exam__title'>
           <img src={googleSVG} />
-          <span className='text__helper'>Have an Trouble</span>
+          <span className='text__helper'>Have an Trouble?</span>
           <span>Time: 1: 30 mins</span>
         </div>
         <div className='exam__notice'>

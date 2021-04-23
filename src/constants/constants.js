@@ -12,16 +12,19 @@ export const RoutePath = {
   signUpUser: '/signup/user',
   help: '/help',
   hrSignup: '/hrsignup',
-  dashboard: '/dashboard',
   userDashboard: '/userdashboard',
   hrDashboard: '/hrdashboard',
-  admin: '/admin',
+  admin: '/admindashboard',
+  totalUsers: '/admindashboard/totalusers',
+  adminAddQuestion: '/admin/addquestions',
   profile: '/profile',
+  adminprofile: '/adminprofile',
+  userProfile: '/userprofile',
+  hrProfile: '/hrprofile',
   find: '/findhr',
   notify: '/notify',
   updateProfileHr: '/updateprofile',
   startExam: '/exam',
-  addQuestion: '/add',
   questionPreview: '/preview'
 };
 

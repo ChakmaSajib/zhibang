@@ -2,9 +2,9 @@ import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { TextField, Paper, Grid, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link, useHistory } from 'react-router-dom';
-import NotificationOverlay from '../../NotificationOverlay';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { userActions } from '../../../stores/actions/usersActions';
+import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   userSignUpContainer: {
@@ -43,38 +43,26 @@ const useStyles = makeStyles((theme) => ({
 
 export default function UserSignUp() {
   const classes = useStyles();
-  const history = useHistory();
+  const dispatch = useDispatch();
+
   const {
     handleSubmit,
     control,
     formState: { errors }
   } = useForm();
   const onSubmit = (data) => {
-    console.log('submit button is clicked');
-
+    alert(data);
+    console.log(data.name);
+    const { name, email, password } = data;
     if (data) {
-      try {
-        const response = axios.post('http://localhost:8080/users/register', {
-          username: 'axios',
-          password: 'axios',
-          email: 'axiso@gmail.com',
-          phone: '6565'
-        });
-        console.log(`this is the response ${response}`);
-      } catch (error) {
-        console.log(error);
-      }
-
-      // setTimeout(() => history.push('/notify'), 2000);
+      dispatch(
+        userActions.registerEmployee({
+          username: name,
+          email,
+          password
+        })
+      );
     }
-
-    // if (data) {
-    //     const { personalPhone, officialPhone, email } = data;
-    //     dispatch(setPersonalPhone(personalPhone));
-    //     dispatch(setOfficialPhone(officialPhone));
-    //     dispatch(setEmail(email));
-    //     setVaild(true);
-    // }
   };
   return (
     <div className='container'>
@@ -83,7 +71,6 @@ export default function UserSignUp() {
           <Controller
             name='name'
             control={control}
-            defaultValue={false}
             rules={{ required: true, pattern: /^[aA-zZ]*$/ }}
             render={({ field }) => {
               return (
@@ -131,7 +118,7 @@ export default function UserSignUp() {
               Your email address is required
             </span>
           )}
-          <Controller
+          {/* <Controller
             className={classes.textField}
             name='institute'
             control={control}
@@ -151,7 +138,7 @@ export default function UserSignUp() {
                 placeholder='College/University Name'
               />
             )}
-          />
+          /> */}
           {errors.institute && (
             <span role='alert' class={classes.span}>
               Your institute name is required
@@ -179,32 +166,6 @@ export default function UserSignUp() {
             )}
           />
           {errors.password && (
-            <span role='alert' class={classes.span}>
-              Please input your password
-            </span>
-          )}
-
-          <Controller
-            name='password1'
-            control={control}
-            rules={{
-              required: true
-            }}
-            render={({ field }) => (
-              <TextField
-                {...field}
-                error={errors.password1}
-                className={classes.textField}
-                variant='outlined'
-                id='password1'
-                label='Password'
-                type='password'
-                autoComplete='password1'
-                placeholder='Re-type Password'
-              />
-            )}
-          />
-          {errors.password1 && (
             <span role='alert' class={classes.span}>
               Please input your password
             </span>
