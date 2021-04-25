@@ -27,7 +27,6 @@ function HrProfileWithImage({
             name='rate2'
             editing={false}
             starCount={stars}
-            starCount={5}
             value={8}
           />
         </p>

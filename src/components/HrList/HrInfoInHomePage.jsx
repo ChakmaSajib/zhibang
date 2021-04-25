@@ -22,13 +22,14 @@ export default function HrInfoInHomePage() {
           {hrs.length &&
             hrs.map((hr, index) => (
               <HrProfileWithImage
+                key={index}
                 id={hr.hrid}
                 name={hr.name}
                 company={hr.cpname}
-                experience='12 Years of experience'
-                totalCV='47 CV reviewed'
-                totalMock='190 Mock Interviews'
-                stars='5'
+                experience={`${hr.experience_year} Years of experience`}
+                totalCV={`${hr.check_cv_count} CV reviewed`}
+                totalMock={`${hr.mock_interview_count} Mock reviewed`}
+                stars={hr.star}
               />
             ))}
         </div>

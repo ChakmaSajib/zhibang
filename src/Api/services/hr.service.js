@@ -4,7 +4,7 @@ class HrDataService {
     return http.get('/users/hrinfo');
   }
 
-  get(id) {
+  getHr(id) {
     return http.get(`/hrinfo/${id}`);
   }
 
@@ -19,6 +19,8 @@ class HrDataService {
       major
     });
   }
+
+  // Api endpoint
 
   update(id, data) {
     return http.put(`/tutorials/${id}`, data);

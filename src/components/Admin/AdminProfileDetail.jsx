@@ -44,7 +44,7 @@ export default function AdminProfileDetail(props) {
           {/* if user is logined then only he/she could see update profile button */}
           {authentication.loggedIn ? (
             <div className='hr-profile-header-right'>
-              <Link to='/updateprofile'>
+              <Link to='/adminprofileupdate'>
                 <ButtonSecondary text='Update Profile' />
               </Link>
             </div>

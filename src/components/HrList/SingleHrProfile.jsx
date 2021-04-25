@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ButtonPrimary from '../Buttons/ButtonPrimary';
 import ButtonSecondary from '../Buttons/ButtonSecondary';
 import HrProfile from '../../assets/img/hr-profile.jpg';
@@ -13,20 +13,53 @@ import {
 import { useParams, Link } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
+import UploadFiles from '../UploadFiles';
+import UploadFile from '../UploadFile';
+import axios from 'axios';
 
 export default function SingleHrProfile(props) {
   const authentication = useSelector((state) => state.authentication);
 
   const [open, setOpen] = useState(false);
+  const [openCv, setCv] = useState(false);
+
+  // to Check data is loading and to store the return data to our data variable
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState();
+  // to get the id from route
   const { id } = useParams();
+
+  useEffect(async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/users/hrinfo/id?hrid=${id}`
+      );
+      setData(response);
+      console.log('this is ' + response);
+      console.log(response.data);
+      setIsLoading(false);
+
+      console.log(data);
+      console.log(data.data.hr.hrname);
+    } catch (error) {
+      console.log(error);
+    }
+  }, [id]);
+
   console.log(id);
   const handleClickOpen = () => {
     console.log('single ');
     setOpen(true);
   };
-
   const handleClose = (value) => {
     setOpen(false);
+  };
+
+  const openCvDialog = () => {
+    setCv(true);
+  };
+  const closeCvDialog = () => {
+    setCv(false);
   };
 
   return (
@@ -36,8 +69,8 @@ export default function SingleHrProfile(props) {
           <div className='hr-profile-header-left'>
             <img src={HrProfile} />
             <div className='hr-profile-text'>
-              <h1>HR name goes here</h1>
-              <p>Head of HR, NFLabs</p>
+              <h1>{!isLoading && data.data.hr.hrname}</h1>
+              <p>{!isLoading && data.data.hr.cpname}</p>
               <StarRatingComponent
                 name='rate2'
                 editing={false}
@@ -49,11 +82,13 @@ export default function SingleHrProfile(props) {
 
           <div className='hr-profile-header-right'>
             <ButtonSecondary text='Send Message' />
-            <ButtonSecondary text='Send CV' />
+            <ButtonSecondary text='Send CV' onClick={openCvDialog} />
+
+            <UploadFile open={openCv} onClose={closeCvDialog} />
+
             <ButtonSecondaryBlack
               text='Mock Interview '
               onClick={handleClickOpen}
-              //   onClick={() => console.log('You clicked on the pink circle!')}
             />
 
             <Booking open={open} onClose={handleClose} />
@@ -63,15 +98,15 @@ export default function SingleHrProfile(props) {
           <div className='hr-profile-body-left'>
             <div className='count'>
               <div className='work'>
-                <h3>23</h3>
+                <h3>{!isLoading && data.data.hr.check_cv_count}</h3>
                 <span>CV Reviewed</span>
               </div>
               <div className='work'>
-                <h3>23</h3>
+                <h3>{!isLoading && data.data.hr.mock_interview_count}</h3>
                 <span>Mock Interviews</span>
               </div>
               <div className='work'>
-                <h3>23+</h3>
+                <h3>{!isLoading && data.data.hr.experience_year}</h3>
                 <span>Years of Experience</span>
               </div>
             </div>
@@ -79,11 +114,11 @@ export default function SingleHrProfile(props) {
               <h3>Contact</h3>
               <p>
                 <FontAwesomeIcon icon={faPhoneSquareAlt} />
-                Phone: +096023768
+                {!isLoading && data.data.hr.phone}
               </p>
               <p>
                 <FontAwesomeIcon icon={faEnvelope} />
-                Email: chakma@gmail.com
+                Email: {!isLoading && data.data.hr.email}
               </p>
             </div>
 

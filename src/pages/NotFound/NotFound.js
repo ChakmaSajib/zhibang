@@ -6,6 +6,7 @@ import Booking from '../../components/Booking/Booking';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import Users from './Users';
 import Hrs from './Hrs';
+import UploadFiles from '../../components/UploadFiles';
 
 export default function NotFoundPage() {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ export default function NotFoundPage() {
       <CustomButton label='Large' variant='outline' size='large' />
       <Users />
       <Hrs />
+      <UploadFiles />
     </div>
   );
 }

@@ -64,7 +64,7 @@ export default function Login() {
   const onSubmit = (data) => {
     console.log('submit button is clicked');
     const { email, password } = data;
-    alert(JSON.stringify(data));
+    // alert(JSON.stringify(data));
     const { from } = location.state || { from: { pathname: '/app' } };
     dispatch(login(email, password, from));
 

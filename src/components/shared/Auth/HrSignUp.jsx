@@ -94,6 +94,7 @@ export default function HrSignUp() {
               );
             }}
           />
+
           {errors.name && (
             <span role='alert' class={classes.span}>
               Please input valid name

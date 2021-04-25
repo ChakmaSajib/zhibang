@@ -22,10 +22,6 @@ function DashboardRightSection({ heading, text }) {
         {heading}
         <span>{text}</span>
       </h2>
-      <div className='dashboard-right-section-content-box'>
-        <MockInterviewRequested />
-        <MockInterviewAfterAccept />
-      </div>
     </div>
   );
 }
@@ -105,7 +101,6 @@ function Dashboard() {
             </Link>
           </li>
 
-          {/* {openCvMenu ? <DashboardDropdownMenu /> : null} */}
           {openCvMenu ? (
             <div className='dashboard-dropdown-menu'>
               <li onClick={handleRequestedClick}>
@@ -133,17 +128,10 @@ function Dashboard() {
             icon={faQuestionCircle}
             content='Interview Questions'
           />
-          <DashboardSideNavbar icon={faStarHalfAlt} content='My feedbacks' />
         </div>
         <div className='dashboard-right-section'>
           <h2 style={{ color: '#1BA94C' }}> Welcome to User Dashboard</h2>
         </div>
-        {openRightSection && (
-          <DashboardRightSection
-            heading='Sajib CHakma'
-            text='Requested mock interviews'
-          />
-        )}
       </div>
     </div>
   );

@@ -57,8 +57,9 @@ function DashboardRightSection({ heading, text }) {
           </div>
           <div className='form-button '>
             <ButtonSecondaryIcon icon={faSave} text='Save' />
-
-            <ButtonSecondaryIconBlack icon={faEye} text='Preview' />
+            <Link to='/preview'>
+              <ButtonSecondaryIconBlack icon={faEye} text='Preview' />
+            </Link>
           </div>
         </form>
       </div>

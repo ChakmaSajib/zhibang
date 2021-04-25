@@ -25,7 +25,8 @@ export const RoutePath = {
   notify: '/notify',
   updateProfileHr: '/updateprofile',
   startExam: '/exam',
-  questionPreview: '/preview'
+  questionPreview: '/preview',
+  questionPreview: '/adminprofileupdate'
 };
 
 export const alertConstants = {
