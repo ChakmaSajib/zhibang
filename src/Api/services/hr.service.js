@@ -1,4 +1,5 @@
 import http from '../http-common';
+
 class HrDataService {
   getAll() {
     return http.get('/users/hrinfo');
@@ -38,5 +39,14 @@ class HrDataService {
     return http.get(`/tutorials?title=${title}`);
   }
 }
+
+// to create the CV Request
+
+// using form-> form data -> localhost:8080/hrs/checkcv hrid
+// localhost:8080/users/checkcv // using form -> userid, hrid, file
+
+// localhost:8080/users/checkcv  get   -- -user will get his requested cv update
+
+//
 
 export default new HrDataService();

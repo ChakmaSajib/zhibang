@@ -18,6 +18,12 @@ class UsersService {
       password
     });
   }
+
+  getCv(userid) {
+    return http.get(`/users/user/cv?userid=${userid}`);
+  }
 }
+
+// file directory: http://localhost:8080/images/1619684179709Acceptance%20Letter.pdf
 
 export default new UsersService();

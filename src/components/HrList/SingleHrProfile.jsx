@@ -28,6 +28,9 @@ export default function SingleHrProfile(props) {
   const [data, setData] = useState();
   // to get the id from route
   const { id } = useParams();
+  const checkUser = JSON.parse(localStorage.getItem('user'));
+  console.log(checkUser);
+  console.log(checkUser.data.user.userid);
 
   useEffect(async () => {
     try {
@@ -35,12 +38,12 @@ export default function SingleHrProfile(props) {
         `http://localhost:8080/users/hrinfo/id?hrid=${id}`
       );
       setData(response);
-      console.log('this is ' + response);
-      console.log(response.data);
+      // console.log('this is ' + response);
+      // console.log(response.data);
       setIsLoading(false);
 
-      console.log(data);
-      console.log(data.data.hr.hrname);
+      // console.log(data);
+      // console.log(data.data.hr.hrname);
     } catch (error) {
       console.log(error);
     }
@@ -81,7 +84,10 @@ export default function SingleHrProfile(props) {
           </div>
 
           <div className='hr-profile-header-right'>
-            <ButtonSecondary text='Send Message' />
+            <Link to='/messages'>
+              <ButtonSecondary text='Send Message' />
+            </Link>
+
             <ButtonSecondary text='Send CV' onClick={openCvDialog} />
 
             <UploadFile open={openCv} onClose={closeCvDialog} />

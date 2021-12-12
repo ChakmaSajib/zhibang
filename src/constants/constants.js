@@ -24,9 +24,16 @@ export const RoutePath = {
   find: '/findhr',
   notify: '/notify',
   updateProfileHr: '/updateprofile',
-  startExam: '/exam',
+  startExam: '/exam/:id',
   questionPreview: '/preview',
-  questionPreview: '/adminprofileupdate'
+  questionPreview: '/adminprofileupdate',
+  chating: '/messages',
+  testing: '/testing',
+  uploadCv: '/user/upload/cv',
+  adminuploadcv: '/admin/upload/cv',
+  checkcvRequested: '/hr/checkcv/requested',
+  checkcvAccepted: '/hr/checkcv/accepted',
+  checkcvCompleted: '/hr/checkcv/completed'
 };
 
 export const alertConstants = {

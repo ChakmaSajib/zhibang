@@ -11,6 +11,11 @@ import ButtonSecondary from './Buttons/ButtonSecondary';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faBook } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  getAllSetofQuestions,
+  getAllSetofQuestionsWithUniqueCompany
+} from '../stores/actions/questionActions';
 
 const useStyles = makeStyles((theme) => ({
   questionCards: {
@@ -98,14 +103,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CompanyInterviewQuestions() {
+  const dispatch = useDispatch();
+  const questionsSets = useSelector((state) => state.questionSets);
+
+  const setsOfQuestionWithCompany = useSelector(
+    (state) => state.questionSets.setsOfQuestionWithCompany
+  );
+
+  const { setsOfQuestion } = questionsSets;
+
+  useEffect(() => {
+    dispatch(getAllSetofQuestionsWithUniqueCompany());
+    dispatch(getAllSetofQuestions());
+  }, [dispatch]);
   const classes = useStyles();
-  const [chipData, setChipData] = React.useState([
-    { key: 0, label: 'Xiaomi' },
-    { key: 1, label: 'Google' },
-    { key: 2, label: 'Baidu' },
-    { key: 3, label: 'FACEBOOK' },
-    { key: 4, label: 'Amazon' }
-  ]);
 
   const handleClick = (item) => {
     console.log(item);
@@ -118,12 +129,10 @@ export default function CompanyInterviewQuestions() {
           <span className={classes.span}>Company</span>
         </div>
         <div className='right'>
-          <TextWithImage text='Baidu' />
-          <TextWithImage text='Google' />
-          <TextWithImage text='Amazon' />
-          <TextWithImage text='Apple' />
-          <TextWithImage text='Yahoo' />
-          <TextWithImage text='Zoom' />
+          {setsOfQuestionWithCompany.hasOwnProperty('cpname') &&
+            setsOfQuestionWithCompany.cpname.map((company, index) => (
+              <TextWithImage text={company} key={index} />
+            ))}
         </div>
       </div>
 
@@ -132,11 +141,10 @@ export default function CompanyInterviewQuestions() {
           <span className={classes.span}>Position</span>
         </div>
         <div className='right'>
-          <TextWithImage text='PHP Developer' />
-          <TextWithImage text='Golang Developer' />
-          <TextWithImage text='Java Developer' />
-          <TextWithImage text='Ruby and Rails Developer' />
-          <TextWithImage text='React Native Developer' />
+          {setsOfQuestionWithCompany.hasOwnProperty('cpname') &&
+            setsOfQuestionWithCompany.catalog.map((position, index) => (
+              <TextWithImage text={position} key={index} />
+            ))}
         </div>
       </div>
 
@@ -145,36 +153,24 @@ export default function CompanyInterviewQuestions() {
           <span className={classes.span}>Year</span>
         </div>
         <div className='right'>
-          <TextWithImage text='2017' />
-          <TextWithImage text='2019' />
-          <TextWithImage text='2021' />
-          <TextWithImage text='2016' />
+          {setsOfQuestionWithCompany.hasOwnProperty('cpname') &&
+            setsOfQuestionWithCompany.questionSet.map((question, index) => (
+              <TextWithImage text={question.addtime} key={index} />
+            ))}
         </div>
       </div>
       <div className={classes.questionCards}>
-        <Cards company='Baidu' problemSet='10' time='2.00 Hours' />
-        <Cards
-          company='Google Interview Question'
-          problemSet='10'
-          time='2.00 Hours'
-        />
-        <Cards
-          company='Amazon Interview Question'
-          problemSet='10'
-          time='2.00 Hours'
-        />
-        <Cards company='Tencent' problemSet='10' time='2.00 Hours' />
-
-        <Cards company='Facebook' problemSet='10' time='2.00 Hours' />
-        <Cards company='Bytedance' problemSet='10' time='2.00 Hours' />
-        <Cards company='Zoom' problemSet='10' time='2.00 Hours' />
-        <Cards company='Tesla ' problemSet='10' time='2.00 Hours' />
-        <Cards company='SpaceX' problemSet='10' time='2.00 Hours' />
-        <Cards
-          company='Wechat Interview Question'
-          problemSet='10'
-          time='2.00 Hours'
-        />
+        {setsOfQuestionWithCompany.hasOwnProperty('cpname') &&
+          setsOfQuestionWithCompany.questionSet.map((question, index) => (
+            <Cards
+              key={index}
+              setName={question.set_name}
+              company={question.cpname}
+              problemSet={question.total_question_num}
+              time={question.time === null ? '' : `${question.time}mins`}
+              link={index + 1}
+            />
+          ))}
       </div>
     </div>
   );
@@ -192,12 +188,20 @@ function TextWithImage({ text, image }) {
   );
 }
 
-function Cards({ company, problemSet, time }) {
+function Cards({ company, problemSet, time, link, setName }) {
   const classes = useStyles();
   return (
     <div>
       <Card className={classes.cards} variant='outlined'>
         <CardContent>
+          <Typography
+            component='h2'
+            className={classes.title}
+            color='textSecondary'
+            gutterBottom
+          >
+            {setName}
+          </Typography>
           <Typography
             component='h2'
             className={classes.title}
@@ -217,7 +221,7 @@ function Cards({ company, problemSet, time }) {
           </Typography>
         </CardContent>
         <CardActions style={{ justifyContent: 'center' }}>
-          <Link to='/exam'>
+          <Link to={`/exam/${link}`}>
             <ButtonSecondary text='Start' />
           </Link>
         </CardActions>

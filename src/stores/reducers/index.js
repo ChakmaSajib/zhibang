@@ -6,6 +6,7 @@ import countReducer from './countReducer';
 import { alert } from './alertReducer';
 import hrReducer from './hrsReducer';
 import userReducer from './usersReducer';
+import questionReducer from './QuestionReducer';
 
 const createCombinedReducers = (history) =>
   combineReducers({
@@ -15,7 +16,8 @@ const createCombinedReducers = (history) =>
     alert,
     hrsList: hrReducer,
     count: countReducer,
-    usersList: userReducer
+    usersList: userReducer,
+    questionSets: questionReducer
   });
 
 export default createCombinedReducers;

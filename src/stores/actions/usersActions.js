@@ -1,9 +1,20 @@
 import axios from 'axios';
 import { history } from '../store';
 
-import { GET_USERS, USERS_ERROR, userConstants } from '../types';
+import { GET_USERS, USERS_ERROR, userConstants, USER_GET_CV } from '../types';
 import userService from '../../Api/services/usersService';
 
+export const getCv = (userid) => async (dispatch) => {
+  try {
+    const response = await userService.getCv(userid);
+    dispatch({
+      type: USER_GET_CV,
+      payload: response.data
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 export const getUsers = () => async (dispatch) => {
   try {
     const res = await axios.get(`http://jsonplaceholder.typicode.com/users`);
@@ -19,27 +30,26 @@ export const getUsers = () => async (dispatch) => {
   }
 };
 
-export const registerEmployee = (username, email, password) => async (
-  dispatch
-) => {
-  console.log(username);
-  try {
-    console.log(`this is the data ${username}`);
+export const registerEmployee =
+  (username, email, password) => async (dispatch) => {
+    console.log(username);
+    try {
+      console.log(`this is the data ${username}`);
 
-    const res = await userService.registerEmployee(username, email, password);
-    console.log(res);
-    console.log(`this is the response ${res.data}`);
+      const res = await userService.registerEmployee(username, email, password);
+      console.log(res);
+      console.log(`this is the response ${res.data}`);
 
-    dispatch({
-      type: userConstants.REGISTER_SUCCESS,
-      payload: res.data
-    });
-    history.push('/signin');
-    // dispatch(alertActions.success('Registration successful'));
-  } catch (error) {
-    console.log(error);
-  }
-};
+      dispatch({
+        type: userConstants.REGISTER_SUCCESS,
+        payload: res.data
+      });
+      history.push('/signin');
+      // dispatch(alertActions.success('Registration successful'));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
 export const login = (username, password, from) => {
   return async (dispatch) => {
@@ -48,8 +58,8 @@ export const login = (username, password, from) => {
     try {
       const response = await userService.login(username, password);
 
-      console.log('this is the ' + response);
-      console.log(response.data.msg);
+      // console.log('this is the ' + response);
+      // console.log(response.data.msg);
       switch (response.data.msg) {
         case 'Incorrect email':
           console.log('inside from email');
@@ -109,5 +119,6 @@ export const logout = () => {
 export const userActions = {
   login,
   logout,
-  registerEmployee
+  registerEmployee,
+  getCv
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function Add({ icon, text, onClick, disabled, variant }) {
+export default function Remove({ icon, text, onClick, disabled, variant }) {
   const handleOnClick = (event) => {
     onClick && onClick({ event });
   };

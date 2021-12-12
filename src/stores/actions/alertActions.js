@@ -17,3 +17,5 @@ export const alertActions = {
   error,
   clear
 };
+
+// function -  return 1. type 2. message

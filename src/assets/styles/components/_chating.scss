@@ -1,0 +1,200 @@
+.chating {
+  display: grid;
+  grid-template-columns: 4fr 5fr 3fr;
+  margin-top: 1rem;
+}
+
+.chating__left {
+  border-right: 1px solid #f2f2f2;
+  padding-right: 1rem;
+}
+
+.chating__right {
+  padding-left: 1rem;
+  border-left: 1px solid #f2f2f2;
+}
+.chating__right__profile {
+  text-align: center;
+  img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+  }
+  h2 {
+    margin-top: 0.5rem;
+    color: $primaryBlue;
+    font-size: 1.25rem;
+    margin-bottom: 0.625rem;
+  }
+  p {
+    color: $lightGrey;
+    margin-bottom: 0.625rem;
+  }
+}
+
+.social__icons {
+  svg {
+    // On icon  only  height
+    height: 2rem !important;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    color: $lightGrey;
+  }
+}
+// .chating__searchbox {
+//   background-image: url('../../img/search.svg');
+// }
+
+.chat__message_container {
+  padding: 0 1rem;
+  position: relative;
+  min-height: 31.25rem;
+}
+.chating_mid_top {
+  height: 3rem;
+  padding: 0 1.25rem;
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: center;
+
+  h2 {
+    color: $primaryBlue;
+    font-weight: 400;
+    font-size: 1rem;
+    margin-bottom: 0;
+    span {
+      font-weight: 500;
+    }
+  }
+}
+
+.chat__message {
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  img {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    margin-right: 0.625rem;
+  }
+  p {
+    line-height: 1.5;
+    margin-bottom: 0;
+    padding: 0.5rem;
+    max-width: 70%;
+  }
+}
+
+.message__receive {
+  p {
+    background-color: #f2f2f2;
+    border-radius: 0px 20px 0px 20px;
+  }
+}
+
+.message__sent {
+  justify-content: flex-end;
+  p {
+    margin-right: 0.625rem;
+    background-color: #34495e;
+    color: #fff;
+
+    border-radius: 20px 0 20px 20px;
+  }
+}
+
+.chating__right__attachment {
+  margin-top: 6rem;
+  h4 {
+    color: $lightGrey;
+    font-size: 1rem;
+  }
+}
+
+.chat__people {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #fff;
+  padding: 0.5rem 0.625rem;
+  margin-bottom: 0.25rem;
+  img {
+    height: 3rem;
+    width: 3rem;
+    margin-right: 0.625rem;
+    border-radius: 50%;
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h2 {
+      line-height: 1;
+      font-weight: 500;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: $primaryBlack;
+    }
+    p {
+      font-size: 0.875rem;
+      margin: 0;
+      line-height: 1;
+      color: $lightGrey;
+    }
+  }
+  .unread p {
+    color: $primaryBlack;
+  }
+  &.active {
+    background-color: #f2f2f2;
+    h2 {
+      color: $primaryBlue;
+    }
+  }
+
+  &:hover {
+    background-color: #f2f2f2;
+  }
+}
+
+.message_input {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.chat_form {
+  display: flex;
+  // need to check again in near future
+  input {
+    outline: none;
+    &:focus,
+    &:hover {
+      outline: none;
+    }
+  }
+  input[type='text'] {
+    min-height: 2.25rem;
+    border: 1px solid #f2f2f2;
+    background-color: #f2f2f2;
+    color: $lightGrey;
+    // need to check here, again
+    width: calc(100% - 6rem);
+    padding: 0 0.5rem;
+  }
+  input[type='submit'] {
+    height: 2.5rem;
+    width: 2.5rem;
+    border: 0;
+    margin-left: 0.625rem;
+    border-radius: 50%;
+    background-image: url('../../img/send.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 1.25rem;
+    background-color: $primaryBlue;
+    cursor: pointer;
+  }
+}

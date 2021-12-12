@@ -26,6 +26,11 @@ import HrProfile from '../pages/HrProfile';
 import UserProfile from '../pages/UserProfile';
 import AdminProfile from '../pages/AdminProfile';
 import CompanyInterviewQuestion from '../pages/CompanyInterviewQuestion';
+import Chating from '../components/Chating';
+import Testing from '../components/Testing';
+import UploadFiles from '../components/UploadFiles';
+import UserUploadFile from '../pages/UserUploadFile';
+import HrCheckCVRequested from '../pages/HrCheckCVRequested';
 
 function Routes() {
   return (
@@ -63,6 +68,8 @@ function Routes() {
 
         <Route path={RoutePath.find} exact component={HrCatalog} />
         <Route path={RoutePath.startExam} exact component={Exam} />
+        <Route path={RoutePath.testing} exact component={Testing} />
+
         <Route
           path={RoutePath.adminAddQuestion}
           exact
@@ -79,7 +86,21 @@ function Routes() {
           exact
           component={UpdateHrProfile}
         />
+
+        <Route
+          path={RoutePath.adminuploadcv}
+          exact
+          component={UserUploadFile}
+        />
+        <Route
+          path={RoutePath.checkcvRequested}
+          exact
+          component={HrCheckCVRequested}
+        />
+
         <Route path={RoutePath.totalUsers} exact component={TotalUsers} />
+        <Chating />
+        <Route path={RoutePath.chating} exact component={TotalUsers} />
 
         <PrivateRoute path='/path' component={PrivateRoute} />
         <Route path='*' component={NotFound} />

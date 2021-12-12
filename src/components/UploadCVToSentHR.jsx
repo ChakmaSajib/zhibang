@@ -25,7 +25,7 @@ const BorderLinearProgress = withStyles((theme) => ({
   }
 }))(LinearProgress);
 
-export default class UploadFiles extends Component {
+export default class UploadCVToSentHR extends Component {
   constructor(props) {
     super(props);
     this.selectFile = this.selectFile.bind(this);

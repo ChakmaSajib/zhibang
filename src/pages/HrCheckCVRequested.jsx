@@ -1,3 +1,4 @@
+import Header from '../components/shared/Header';
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
@@ -13,9 +14,8 @@ import {
   faTimesCircle,
   faSwimmer
 } from '@fortawesome/free-solid-svg-icons';
-import Header from '../shared/Header';
 
-export default function DashboardHr() {
+export default function HrCheckCVRequested() {
   return (
     <div>
       <Header />
@@ -76,7 +76,7 @@ function Dashboard() {
           />
           <DashboardSideNavbar icon={faStarHalfAlt} content='My feedbacks' />
         </div>
-        <DashboardRightSection heading='Requested mock interviews' />
+        <DashboardRightSection heading='Requested CV interviews' />
       </div>
     </div>
   );

@@ -107,10 +107,21 @@ function DropDown() {
           <a href='/adminprofile'>My Profile</a>
         </li>
       )}
+      {authentication.user.data.hasOwnProperty('admin') && (
+        <li>
+          <a href='/admin/upload/cv'>Upload CV</a>
+        </li>
+      )}
 
       {authentication.user.data.hasOwnProperty('user') && (
         <li>
           <a href='/userprofile'>My Profile</a>
+        </li>
+      )}
+
+      {authentication.user.data.hasOwnProperty('user') && (
+        <li>
+          <a href='/user/upload/cv'>Upload CV</a>
         </li>
       )}
       {/* <li>

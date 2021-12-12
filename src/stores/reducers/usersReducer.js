@@ -1,8 +1,9 @@
-import { GET_USERS } from '../types';
+import { GET_USERS, USER_GET_CV } from '../types';
 
 const initialState = {
   users: [],
-  loading: true
+  loading: true,
+  userCVfile: ''
 };
 
 export default function (state = initialState, action) {
@@ -12,6 +13,11 @@ export default function (state = initialState, action) {
         ...state,
         users: action.payload,
         loading: false
+      };
+    case USER_GET_CV:
+      return {
+        ...state,
+        userCVfile: action.payload
       };
     default:
       return state;

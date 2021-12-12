@@ -5,6 +5,7 @@ import './_hrinfoinhomepage.scss';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllHrs } from '../../stores/actions/hrsActions';
+import HrProfile from '../../assets/img/hr-profile.jpg';
 
 export default function HrInfoInHomePage() {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ export default function HrInfoInHomePage() {
           {hrs.length &&
             hrs.map((hr, index) => (
               <HrProfileWithImage
+                image={HrProfile}
                 key={index}
                 id={hr.hrid}
                 name={hr.name}
